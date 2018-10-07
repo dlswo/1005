@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    .container{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    h1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .completed{
+        text-decoration: line-through;
+        color: red;
+    }
+    li{
+        list-style:none;
+    }
+
+</style>
+
+
+<div class="container">
+
+    <div class="header">
+        <h1>todos</h1>
+        <div class="todo-form" data-dojo-attach-event="submit: addTodo">
+            <input id="myInput" class="new-todo" placeholder="What needs to be done?" value="">
+        </div>
+        <div class="todoList">
+            <li id="listLI" class=''><input type="checkbox" id="check">ee<br></li>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    // Get the input field
+    var input = document.getElementById("myInput");
+    var listInput = document.querySelector(".todoList");
+    var str = '';
+
+
+
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function(event) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Trigger the button element with a click
+            str += "<li id=\"listLI\" class=''><input type=\"checkbox\" id=\"check\" >" + input.value + "<br></li>";
+            listInput.innerHTML = str;
+        }
+    });
+
+    // checkbox.addEventListener('change', function () {
+    //     if(this.checked){
+    //         // input.value.style.textDecoration = "line-through";
+    //         targetLI.setAttribute("class", "completed");
+    //     }
+    //     else{
+    //         targetLI.setAttribute("class", "");
+    //     }
+    // });
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var checkbox = document.querySelector('input[id=check]');
+        var targetLI = document.querySelector("#listLI");
+        console.log(checkbox);
+        checkbox.addEventListener('change', function (event) {
+            if (checkbox.checked) {
+                targetLI.setAttribute("class", "completed");
+            } else {
+                targetLI.setAttribute("class", "");
+            }
+        });
+    });
+
+    // function find(selector) {
+    //     return document.querySelector(selector);
+    // }
+    // find(".check").addEventListener("click", (e)=>{
+    //     var pid = e.target.getAttribute("data-target");  //패널의 아이디
+    //     console.log(pid);
+    //     current.setAttribute("class", "");
+    //     var targetPanel = find("#"+pid);
+    //     targetPanel.setAttribute("class","completed");
+    //     current = targetPanel;
+    // },false);
+
+
+</script>
+</body>
+</html>

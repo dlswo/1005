@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="b1">CLICK</button>
+
+<script>
+
+    var b1 = document.querySelector("#b1");
+
+    b1.onclick= function () {
+        console.log("aaa");
+    };
+    //일반 함수 선언
+
+    //내부 함수 선언
+
+    function outer() {
+
+        var total = 0;
+
+        function inner(){ //접근제한 private
+            total++;
+            console.log(total);
+        }
+
+        inner();
+        inner();
+        inner();
+        inner();
+
+    }
+
+    outer();
+
+    //파라미터 전달
+
+    //리턴 타입
+</script>
+
+</body>
+</html>
